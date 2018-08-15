@@ -1,0 +1,82 @@
+<!<!DOCTYPE html>
+<html>
+<head>
+</head>   
+<body> 
+    <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/AltspaceVR/AltspaceSDK/v2.9.0/dist/altspace.min.js"></script>
+    <!-- <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script> -->
+
+    <!-- set up the scene -->
+    <a-scene altspace='vertical-align: middle; fullspace:true;'>
+        <a-entity position="0 2 6" rotation="0 0 0" scale="5 5 5" n-layout-browser='url: https://hah.altvr.com/play; isEnclosure:true'></a-entity>
+
+        <!-- preload all our textures -->
+        <a-assets>
+            <img id='moon' src='assets/moon.jpg'/>
+            <img id='stars' src='assets/stars.png'/>
+            <img id='carpet' src='assets/carpet.jpg'/>
+            <img id="WoodLogs" src="assets/WoodLogs.jpg" />
+            <img id="WoodFloor" src="assets/WoodFloor.jpg" />
+            <img id="CeilingTiles" src="assets/CeilingTiles.jpg" />
+            <img id="Grass" src="assets/Grass.jpg" />
+            <img id="Pic1" src="assets/2018-08-09_21-59-59.png" />
+        </a-assets>
+    
+        <!-- Floor -->
+        <a-plane rotation="-90 0 0" width="90" height="90" src="#Grass" repeat="10 10"></a-plane>
+       
+        <!-- add the moon to the scene -->
+       <a-sphere position='0 60 50' radius="10" material='src: #moon;'>
+            <!-- add an animation to make it rotate -->
+            <a-animation to='0 360 0' easing='linear' dur='80000' repeat='indefinite'/>
+        </a-sphere>
+
+        <!-- Walls -->
+        <!-- <a-box n-box-collider='type: environment; size: 12, 4, 12'></a-box> -->
+        <a-plane rotation="0 0 0" position="0 2 12" width="12" height="5" side="back" material="src:#WoodLogs;" n-box-collider='type: environment; size: 12, 0, 0;'></a-plane> <!-- Back Wall -->
+        <a-plane rotation="0 -90 0" position="6 2 6" width="12" height="5" side="double" material="src:#WoodLogs;" n-box-collider='type: environment; size: 12, 0, 0;'></a-plane>
+        <a-plane rotation="0 -90 0" position="-6 2 6" width="12" height="5" side="double" material="src:#WoodLogs;" n-box-collider='type: environment; size: 12, 0, 0;'></a-plane>
+        <a-plane rotation="-90 0 0" position="0 .01 6" width="12" height="12" side="double" material="src:#WoodFloor;"></a-plane> <!-- Floor -->
+        <a-plane rotation="-90 0 0" position="0 4.5 6" width="12" height="12" side="double" material="src:#CeilingTiles;"></a-plane> <!-- Ceiling -->
+        <a-plane rotation="0 0 0" position="3.5 2 0" width="5" height="5" side="double" material="src:#WoodLogs;" n-box-collider='type: environment; size: 5, 0, 0;'></a-plane> <!-- Front -->
+        <a-plane rotation="0 0 0" position="-3.5 2 0" width="5" height="5" side="double" material="src:#WoodLogs;" n-box-collider='type: environment; size: 5, 0, 0;'></a-plane> <!-- Front -->
+        <a-plane rotation="0 0 0" position="0 3.5 0" width="2" height="2" side="double" material="src:#WoodLogs;" n-box-collider='type: environment; size: 5, 0, 0;'></a-plane> <!-- Front -->
+
+        
+
+        <!-- <a-box height="6" width="12" depth="12" position="0 0 0" side="back" material="src:#WoodLogs;"></a-box>
+        <a-box color="red" height="6" width="12" depth="12" position="0 0 0" side="front"></a-box> -->
+
+        <!-- <a-entity n-object='res:architecture/wall-window-4w-4h'></a-entity>
+        <a-entity n-object='res:architecture/floor-4w-4l' material='color: blue' position="0 .05 0"></a-entity>-->
+        <!-- <a-entity n-object='res:effects/fire' position='0 0 6'></a-entity> -->
+        <!-- <a-entity gltf-model="src: url(https://rawgit.com/KhronosGroup/glTF-Sample-Models/master/2.0/Lantern/glTF/Lantern.gltf)" position="0 0 6></a-entity> -->
+        
+        <!-- Pics -->
+        <a-plane rotation="0 0 0" position="0 2.8 11.99" width="1.5" height="1" side="back" material="src:#Pic1"></a-plane> <!-- Group Photo 1 -->
+        <!-- End Pics -->
+ 
+
+        <a-box color="red" position="-2 1 2" height=".2" width =".2" depth=".2" material="src: #carpet;">
+            <a-animation to="0 360 0" easing="linear" dur="40000" repeat="indefinate" />
+        </a-box>
+    
+        
+        
+        <!-- add the backdrop -->
+        <a-sky color="black" radius='2500'></a-sky>
+        
+        <!-- add a view camera (2d only) -->
+        <a-entity position='0 0 2'>
+            <a-camera></a-camera>
+        </a-entity>
+    
+    </a-scene>
+    
+    
+
+
+    
+</body>
+</html>
